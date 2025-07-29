@@ -165,7 +165,9 @@ $cartCount = isset($_SESSION['cart_count']) ? $_SESSION['cart_count'] : 0;
         </div>
     </section>
 
-
+    <br>
+    <br>
+    <br>
     <!-- Promo Section -->
     <section class="promo-section" id="promo">
         <div class="container">
