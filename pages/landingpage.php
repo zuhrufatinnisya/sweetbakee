@@ -111,7 +111,7 @@ $cartCount = isset($_SESSION['cart_count']) ? $_SESSION['cart_count'] : 0;
         <div class="nav-center">
             <a href="landingpage.php">Home</a>
             <a href="menu.php">Menu</a>
-            <a href="contact.php">Contact</a>
+            <a href="kontak.php">Contact</a>
         </div>
         <div class="nav-right">
             <div class="cart-icon" onclick="goToCart()">
