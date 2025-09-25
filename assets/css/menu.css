@@ -1,0 +1,422 @@
+/* Card hover effect for menu */
+.card {
+  box-shadow: 0 2px 8px #e3c6a2;
+  transition: box-shadow 0.22s, transform 0.22s;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+}
+.card:hover {
+  box-shadow: 0 12px 36px #b27441cc, 0 0 0 4px #fff8e1;
+  transform: translateY(-8px) scale(1.04);
+  z-index: 2;
+}
+.add-cart {
+  background: #8B5C2A;
+  color: #fff;
+  padding: 10px 28px;
+  border-radius: 22px;
+  font-weight: 600;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  box-shadow: 0 2px 8px #e3c6a2;
+  cursor: pointer;
+  transition: box-shadow 0.18s, transform 0.18s, background 0.18s;
+  position: relative;
+  overflow: hidden;
+}
+.add-cart:hover {
+  background: #a06b32;
+  box-shadow: 0 0 0 4px #fff, 0 8px 32px #b27441a0;
+  color: #fff;
+}
+.card-title {
+  font-size: 1.2em;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  color: #4b2e16;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+.price {
+  color: #fff !important;
+  font-size: 1.25em;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  letter-spacing: 0.5px;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: #fff5f0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #FFE3D2 0%, #B27441 100%);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 60px;
+}
+
+.hamburger {
+    cursor: pointer;
+    position: absolute;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    user-select: none;
+    font-weight: 600;
+}
+
+.hamburger:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}
+
+.hamburger:active {
+    transform: translateY(0px);
+}
+
+/* SIDEMENU */
+.sidemenu {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100%;
+    background: linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%);
+    box-shadow: 5px 0 25px rgba(0,0,0,0.15);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 999;
+    overflow-y: auto;
+}
+
+.sidemenu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(45deg, #8b4513, #a0522d);
+    border-radius: 0 0 20px 20px;
+}
+
+.sidemenu-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    gap: 8px;
+}
+
+.sidemenu-logo {
+    width: 100px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    overflow: hidden;
+}
+
+.sidemenu-title {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.menu-list-container {
+    margin-top: 120px;
+    padding: 20px 0;
+    background: linear-gradient(180deg, 
+        rgba(248, 249, 255, 0.9) 0%, 
+        rgba(255, 255, 255, 0.95) 50%, 
+        rgba(240, 248, 255, 0.9) 100%);
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(139, 69, 19, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(160, 82, 45, 0.05) 0%, transparent 50%),
+        linear-gradient(45deg, transparent 49%, rgba(139, 69, 19, 0.02) 50%, transparent 51%);
+    min-height: calc(100vh - 120px);
+}
+
+.sidemenu li {
+    padding: 18px 25px;
+    margin: 8px 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: #333;
+    position: relative;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(139, 69, 19, 0.1);
+}
+
+.sidemenu li:first-child {
+    margin-top: 0px;
+}
+
+.sidemenu li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 0;
+    background: linear-gradient(45deg, #8b4513, #a0522d);
+    border-radius: 2px;
+    transition: height 0.3s ease;
+}
+
+.sidemenu li:hover {
+    background: linear-gradient(45deg, rgba(139, 69, 19, 0.1), rgba(160, 82, 45, 0.1));
+    transform: translateX(8px);
+    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
+}
+
+.sidemenu li:hover::before {
+    height: 60%;
+}
+
+.sidemenu li:active {
+    transform: translateX(6px) scale(0.98);
+}
+
+/* Ketika aktif */
+.sidemenu.active {
+    left: 0;
+}
+
+/* biar hilang pakai hidden */
+.hidden {
+    display: block; /* jangan none, biar tetap ada untuk animasi */
+}
+
+/* Overlay untuk blur background */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 998;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sidemenu {
+        width: 260px;
+        left: -260px;
+    }
+    
+    .content h1 {
+        font-size: 2em;
+    }
+    
+    .content p {
+        font-size: 1em;
+    }
+}
+
+.sidemenu-logo img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.logo img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+/* Custom scrollbar for sidemenu */
+.sidemenu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidemenu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.sidemenu::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #8b4513, #a0522d);
+    border-radius: 10px;
+}
+
+.sidemenu::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #a0522d, #8b4513);
+}
+
+
+
+#menuContainer {
+  padding: 100px;
+}
+
+.menu-category {
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+  gap: 15px;
+}
+
+.card {
+  background: #C18350;
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* CHANGE: Style tombol add-cart agar sama di semua halaman */
+.add-cart,
+.checkout-btn,
+.back-btn,
+.btn {
+  padding: 10px 14px;
+  border-radius: 8px;
+  background-color: #d2691e;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+.add-cart:hover,
+.checkout-btn:hover,
+.back-btn:hover,
+.btn:hover {
+  background-color: #b85c17;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .add-cart,
+  .checkout-btn,
+  .back-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+
+.old-price {
+  text-decoration: line-through;
+  font-size: 14px;
+  color: #ddd;
+}
+
+.price {
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.add-cart {
+  background: #fff;
+  color: #8b4513;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.bottom-buttons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  background: #FFE3D2;
+  padding: 10px 20px;
+  gap: 10px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+.bottom-buttons .btn {
+  background: #8b4513;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.bottom-buttons .btn:hover {
+  background: #a0522d;
+  transform: translateY(-2px);
+}
+
+.bottom-buttons .btn:last-child {
+  margin-right: 30px;
+}
+
+/* Container for cart and checkout buttons */
+.cart-checkout-group {
+  display: flex;
+  gap: 10px;
+}

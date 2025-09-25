@@ -1,0 +1,39 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#f9f2e8"/>
+  
+  <!-- Plate -->
+  <ellipse cx="200" cy="220" rx="150" ry="50" fill="#ffffff" stroke="#e0e0e0" stroke-width="2"/>
+  
+  <!-- Mille Crepe Layers -->
+  <g transform="translate(120, 100)">
+    <!-- Bottom layers -->
+    <rect x="0" y="70" width="160" height="8" fill="#5c3c2e" stroke="#4a2c1e" stroke-width="1"/>
+    <rect x="0" y="62" width="160" height="8" fill="#7a4e36" stroke="#5c3c2e" stroke-width="1"/>
+    <rect x="0" y="54" width="160" height="8" fill="#5c3c2e" stroke="#4a2c1e" stroke-width="1"/>
+    <rect x="0" y="46" width="160" height="8" fill="#7a4e36" stroke="#5c3c2e" stroke-width="1"/>
+    <rect x="0" y="38" width="160" height="8" fill="#5c3c2e" stroke="#4a2c1e" stroke-width="1"/>
+    <rect x="0" y="30" width="160" height="8" fill="#7a4e36" stroke="#5c3c2e" stroke-width="1"/>
+    <rect x="0" y="22" width="160" height="8" fill="#5c3c2e" stroke="#4a2c1e" stroke-width="1"/>
+    <rect x="0" y="14" width="160" height="8" fill="#7a4e36" stroke="#5c3c2e" stroke-width="1"/>
+    <rect x="0" y="6" width="160" height="8" fill="#5c3c2e" stroke="#4a2c1e" stroke-width="1"/>
+    <rect x="0" y="0" width="160" height="6" fill="#7a4e36" stroke="#5c3c2e" stroke-width="1"/>
+    
+    <!-- Chocolate Sauce -->
+    <path d="M80,0 Q120,-20 160,5 L160,0 L0,0 L0,5 Q40,-20 80,0 Z" fill="#3d2314"/>
+    <path d="M60,0 Q90,-30 130,-10 Q150,-5 160,5 L160,0 L0,0 L0,5 Q20,-5 60,0 Z" fill="#5c3c2e" opacity="0.7"/>
+    
+    <!-- Dripping Chocolate -->
+    <path d="M100,0 Q100,-10 100,-30 Q100,-40 110,-40 Q120,-40 120,-30 Q120,-10 120,0" fill="#3d2314" opacity="0.9"/>
+    <path d="M50,0 Q50,-5 50,-15 Q50,-25 60,-25 Q70,-25 70,-15 Q70,-5 70,0" fill="#5c3c2e" opacity="0.7"/>
+    <path d="M140,0 Q140,-5 140,-20 Q140,-30 150,-30 Q160,-30 160,-20 Q160,-5 160,0" fill="#3d2314" opacity="0.8"/>
+    
+    <!-- Chocolate Chips -->
+    <circle cx="40" cy="-5" r="5" fill="#2a1608"/>
+    <circle cx="90" cy="-8" r="4" fill="#2a1608"/>
+    <circle cx="130" cy="-6" r="5" fill="#2a1608"/>
+  </g>
+  
+  <!-- Product Name -->
+  <text x="200" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#3d2314">Chocolate Mille Crepe</text>
+</svg>

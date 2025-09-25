@@ -1,0 +1,37 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#f9f2e8"/>
+  
+  <!-- Plate -->
+  <ellipse cx="200" cy="220" rx="150" ry="50" fill="#ffffff" stroke="#e0e0e0" stroke-width="2"/>
+  
+  <!-- Croissant -->
+  <g transform="translate(150, 120)">
+    <!-- Main Croissant Shape -->
+    <path d="M0,0 C20,-30 60,-40 100,-20 C120,0 120,30 100,50 C80,60 50,60 30,40 C10,20 -10,10 0,0 Z" 
+          fill="#f0d6a3" stroke="#d4b978" stroke-width="2"/>
+    
+    <!-- Croissant Layers/Texture -->
+    <path d="M20,-10 C40,-25 70,-30 90,-15" fill="none" stroke="#d4b978" stroke-width="1"/>
+    <path d="M15,5 C35,-10 65,-15 85,0" fill="none" stroke="#d4b978" stroke-width="1"/>
+    <path d="M10,20 C30,5 60,0 80,15" fill="none" stroke="#d4b978" stroke-width="1"/>
+    <path d="M20,35 C40,25 60,25 70,30" fill="none" stroke="#d4b978" stroke-width="1"/>
+    
+    <!-- Highlights -->
+    <path d="M30,-5 C50,-20 80,-25 95,-10" fill="none" stroke="#f5e1b9" stroke-width="2" opacity="0.7"/>
+    <path d="M25,15 C45,0 70,-5 85,10" fill="none" stroke="#f5e1b9" stroke-width="2" opacity="0.7"/>
+    
+    <!-- Shadows -->
+    <path d="M15,25 C35,10 65,5 75,20" fill="none" stroke="#c4a05e" stroke-width="2" opacity="0.3"/>
+    <path d="M25,40 C45,30 60,30 65,35" fill="none" stroke="#c4a05e" stroke-width="2" opacity="0.3"/>
+    
+    <!-- Crumbs -->
+    <circle cx="-10" cy="30" r="2" fill="#f0d6a3"/>
+    <circle cx="-5" cy="40" r="1" fill="#f0d6a3"/>
+    <circle cx="110" cy="20" r="2" fill="#f0d6a3"/>
+    <circle cx="105" cy="30" r="1" fill="#f0d6a3"/>
+  </g>
+  
+  <!-- Product Name -->
+  <text x="200" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#8b5a2b">Croissant</text>
+</svg>

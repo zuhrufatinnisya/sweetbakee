@@ -6,49 +6,49 @@ $title = "SweetBake";
 // Data promo
 $promos = [
     [
-        'id' => 1,
+        'id' => 4, // ID sama dengan produk.php (Greentea)
         'kode_promo' => 'MATCHA01',
-        'nama_paket' => 'Matcha Special',
+        'nama_paket' => 'Greentea',
         'harga_normal' => 27000,
         'harga_promo' => 23000,
-        'image' => 'matcha.png',
-        'alt' => 'Paket Matcha Special'
+        'image' => 'mile_matcha.jpg',
+        'alt' => 'Mille Crepes Greentea'
     ],
     [
-        'id' => 2,
+        'id' => 13, // ID sama dengan produk.php (Citrus Blast)
         'kode_promo' => 'DONAT01',
-        'nama_paket' => 'Donat Deluxe',
-        'harga_normal' => 27000,
-        'harga_promo' => 23000,
+        'nama_paket' => 'Citrus Blast',
+        'harga_normal' => 16000,
+        'harga_promo' => 12000,
         'image' => 'donat.png',
-        'alt' => 'Paket Donat Deluxe'
+        'alt' => 'Donut Citrus Blast'
     ],
     [
-        'id' => 3,
+        'id' => 9, // ID sama dengan produk.php (Lotus Biscoff)
         'kode_promo' => 'LOTUS01',
-        'nama_paket' => 'Lotus Premium',
-        'harga_normal' => 27000,
-        'harga_promo' => 23000,
-        'image' => 'lotus.png',
-        'alt' => 'Paket Lotus Premium'
+        'nama_paket' => 'Lotus Biscoff',
+        'harga_normal' => 18000,
+        'harga_promo' => 13000,
+        'image' => 'cookies_biscoff.jpg',
+        'alt' => 'Cookies Lotus Biscoff'
     ],
     [
-        'id' => 4,
+        'id' => 7, // ID sama dengan produk.php (Tres Leches)
         'kode_promo' => 'SOFTCAKE01',
-        'nama_paket' => 'Tiramisu',
-        'harga_normal' => 53000,
+        'nama_paket' => 'Tres Leches',
+        'harga_normal' => 55000,
         'harga_promo' => 50000,
-        'image' => 'sctiramisu.png',
-        'alt' => 'Paket Coffee Blend'
+        'image' => 'soft_tres.jpg',
+        'alt' => 'Soft Cake Tres Leches'
     ],
     [
-        'id' => 5,
+        'id' => 5, // ID sama dengan produk.php (Regular Brown/Chocolate Chips)
         'kode_promo' => 'MUFFIN01',
-        'nama_paket' => 'Chocolate Chips',
-        'harga_normal' => 12000,
-        'harga_promo' => 11000,
-        'image' => 'cchips.png',
-        'alt' => 'Paket Cake Spesial'
+        'nama_paket' => 'Regular Brown',
+        'harga_normal' => 40000,
+        'harga_promo' => 34000,
+        'image' => 'roll_coklat.jpg',
+        'alt' => 'Roll Cake Coklat'
     ]
 ];
 
@@ -59,26 +59,27 @@ function formatRupiah($angka) {
 function generatePromoCard($promo) {
     $discountPercent = round((($promo['harga_normal'] - $promo['harga_promo']) / $promo['harga_normal']) * 100);
 
-    // Path gambar promo dari ../asset/img/
-    return '
-    <div class="promo-card" data-promo-id="' . $promo['id'] . '">
+    // Path gambar promo dari ../assets/img/
+   return '
+    <div class="promo-card" data-promo-id="' . $promo['id'] . '" onclick="openProductDetail(' . $promo['id'] . ')">
         <span class="badge">Promo</span>
         <img src="../assets/img/' . htmlspecialchars($promo['image']) . '" alt="' . htmlspecialchars($promo['alt']) . '" loading="lazy">
         <div>
-            <h2 class="text-center">' . htmlspecialchars($promo['nama_paket']) . '</h2>
-            <div class="price text-center">
-                <span class="price-discount">' . formatRupiah($promo['harga_normal']) . '</span>
-                <span class="price-final">' . formatRupiah($promo['harga_promo']) . '</span>
-            </div>
-            <div class="flex justify-center">
-                <button onclick="addToCart(\'' . htmlspecialchars($promo['kode_promo']) . '\', \'' . htmlspecialchars($promo['nama_paket']) . '\', ' . $promo['harga_promo'] . ', \'' . htmlspecialchars($promo['image']) . '\')">
-                    <i class="bi bi-cart3"></i>
-                    <span>Tambah</span>
-                </button>
-            </div>
+            <h2 class="text-center product-title">' . htmlspecialchars($promo['nama_paket']) . '</h2>
+        </div>
+        <div class="price text-center">
+            <span class="price-discount">' . formatRupiah($promo['harga_normal']) . '</span>
+            <span class="price-final">' . formatRupiah($promo['harga_promo']) . '</span>
+        </div>
+        <div class="flex justify-center">
+            <button onclick="event.stopPropagation(); addToCart(\'' . htmlspecialchars($promo['kode_promo']) . '\', \'' . htmlspecialchars($promo['nama_paket']) . '\', ' . $promo['harga_promo'] . ', \'' . htmlspecialchars($promo['image']) . '\')">
+                <i class="bi bi-cart3"></i>
+                <span>Tambah</span>
+            </button>
         </div>
     </div>';
 }
+
 
 // User session checking
 $isLoggedIn = isset($_SESSION['user_id']);
@@ -119,26 +120,10 @@ $cartCount = isset($_SESSION['cart_count']) ? $_SESSION['cart_count'] : 0;
                     <span class="cart-badge" id="cartBadge"><?php echo $cartCount; ?></span>
                 <?php endif; ?>
             </div>
-            <?php if ($isLoggedIn): ?>
-                <div class="profile-dropdown" id="profileDropdown">
-                    <div class="profile-btn" onclick="toggleDropdown()">
-                        <img src="<?php echo htmlspecialchars($userData['avatar']); ?>" alt="Profile">
-                        <span><?php echo htmlspecialchars($userData['name']); ?></span>
-                        <i class="bi bi-chevron-down"></i>
-                    </div>
-                    <div class="dropdown-menu" id="dropdownMenu">
-                        <a href="#profile" class="dropdown-item"><i class="bi bi-person"></i> My Profile</a>
-                        <a href="#orders" class="dropdown-item"><i class="bi bi-bag-check"></i> My Orders</a>
-                        <a href="#settings" class="dropdown-item"><i class="bi bi-gear"></i> Settings</a>
-                        <a href="#logout" class="dropdown-item" onclick="logout()"><i class="bi bi-box-arrow-right"></i> Logout</a>
-                    </div>
-                </div>
-            <?php else: ?>
                 <div class="auth-buttons" id="authButtons">
                     <a href="login.php" class="login-btn">Login</a>
                     <a href="signup.php" class="signup-btn">Sign Up</a>
                 </div>
-            <?php endif; ?>
         </div>
     </nav>
 
@@ -155,8 +140,7 @@ $cartCount = isset($_SESSION['cart_count']) ? $_SESSION['cart_count'] : 0;
 
         <div class="search-box">
             <i class="bi bi-search"></i>
-            <input type="text" placeholder="Search">
-            <button><span><i class="bi bi-list"></i></span></button>
+            <input type="text" placeholder="Search" id="searchInput">
         </div>
 
         <div class="hero-text">
@@ -185,6 +169,23 @@ $cartCount = isset($_SESSION['cart_count']) ? $_SESSION['cart_count'] : 0;
     </footer>
 
     <script>
+        // Live search for promo cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const promoSlider = document.getElementById('promoSlider');
+            searchInput.addEventListener('input', function() {
+                const query = searchInput.value.toLowerCase();
+                const cards = promoSlider.querySelectorAll('.promo-card');
+                cards.forEach(card => {
+                    const title = card.querySelector('.product-title').innerText.toLowerCase();
+                    if (title.includes(query)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
         // Simple promo slider
         const promoSlider = document.getElementById('promoSlider');
         const nextPromoBtn = document.getElementById('nextBtn');
@@ -197,19 +198,37 @@ $cartCount = isset($_SESSION['cart_count']) ? $_SESSION['cart_count'] : 0;
             promoSlider.scrollBy({ left: -300, behavior: 'smooth' });
         });
 
-        function addToCart(kodePromo, namaPromo, harga, image = '') {
-            alert(`${namaPromo} berhasil ditambahkan ke keranjang!`);
-        }
+       function addToCart(kodePromo, namaPromo, harga, image = '', id = null) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let existing = cart.find(item => item.kodePromo === kodePromo);
+    if (existing) {
+        existing.quantity += 1;
+    } else {
+        cart.push({
+            id: id || Date.now(),
+            kodePromo,
+            name: namaPromo,
+            price: harga,
+            img: image,
+            quantity: 1
+        });
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${namaPromo} berhasil ditambahkan ke keranjang!`);
+}
 
         function toggleDropdown() {
             const dropdownMenu = document.getElementById('dropdownMenu');
             dropdownMenu.classList.toggle('show');
         }
         function goToCart() {
-            // Pindah ke halaman cart
+            window.location.href = 'keranjang.php';
         }
         function logout() {
             // Proses logout
+        }
+        function openProductDetail(id) {
+        window.location.href = "produk.php?id=" + id;
         }
 
         document.addEventListener('click', function(event) {

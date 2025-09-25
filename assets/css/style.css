@@ -1,0 +1,264 @@
+:root {
+    --primary-color: #8B5A2B; /* Cokelat tua untuk warna utama */
+    --secondary-color: #D2B48C; /* Cokelat muda untuk warna sekunder */
+    --accent-color: #F5DEB3; /* Wheat untuk aksen */
+    --text-color: #4A3728; /* Cokelat gelap untuk teks */
+    --light-color: #FFF8E7; /* Cream light untuk background */
+    --success-color: #28a745; /* Hijau untuk sukses */
+    --danger-color: #dc3545; /* Merah untuk error/danger */
+    --warning-color: #ffc107; /* Kuning untuk warning */
+    --info-color: #17a2b8; /* Biru untuk info */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    background-color: var(--light-color);
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: var(--light-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--primary-color);
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #6d4520;
+    border-color: #6d4520;
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Card Styling */
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 1.5rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.card-title {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Product Detail Styling */
+.product-detail {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.product-detail .product-title {
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.product-detail .product-description {
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.product-detail .product-price {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.product-detail .product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Hero Section */
+.hero {
+    background-color: var(--accent-color);
+    padding: 4rem 0;
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.hero p {
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+footer h5 {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+footer a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Utilities */
+.section-title {
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
+/* Product Card for Detail Page */
+.product-card-detail {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.product-card-detail .product-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.product-card-detail .product-info {
+    padding: 1.5rem;
+}
+
+.product-card-detail .product-title {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.product-card-detail .product-description {
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.product-card-detail .product-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.product-card-detail .btn-order {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.product-card-detail .btn-order:hover {
+    background-color: #6d4520;
+}
+
+/* Product Navigation */
+.product-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.product-nav .nav-btn {
+    width: 40px;
+    height: 40px;
+    background-color: var(--light-color);
+    border: 1px solid var(--secondary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product-nav .nav-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .product-card-detail .product-image {
+        height: 200px;
+    }
+    
+    .product-card-detail .product-title {
+        font-size: 1.5rem;
+    }
+    
+    .product-card-detail .product-price {
+        font-size: 1.2rem;
+    }
+}

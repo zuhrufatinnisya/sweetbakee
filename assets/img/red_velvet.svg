@@ -1,0 +1,36 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#f9f2e8"/>
+  
+  <!-- Plate -->
+  <ellipse cx="200" cy="220" rx="150" ry="50" fill="#ffffff" stroke="#e0e0e0" stroke-width="2"/>
+  
+  <!-- Cake Base -->
+  <g transform="translate(130, 80)">
+    <!-- Cake Body -->
+    <rect x="0" y="30" width="140" height="80" rx="5" ry="5" fill="#b71c1c" stroke="#8f0000" stroke-width="1"/>
+    
+    <!-- Cake Layers -->
+    <line x1="0" y1="50" x2="140" y2="50" stroke="#8f0000" stroke-width="1"/>
+    <line x1="0" y1="70" x2="140" y2="70" stroke="#8f0000" stroke-width="1"/>
+    <line x1="0" y1="90" x2="140" y2="90" stroke="#8f0000" stroke-width="1"/>
+    
+    <!-- Cream Cheese Frosting Top -->
+    <rect x="-10" y="20" width="160" height="15" rx="5" ry="5" fill="#fff9f0" stroke="#f0e6d8" stroke-width="1"/>
+    
+    <!-- Cream Cheese Frosting Drips -->
+    <path d="M0,35 Q5,45 10,35" fill="#fff9f0" stroke="#f0e6d8" stroke-width="1"/>
+    <path d="M30,35 Q35,50 40,35" fill="#fff9f0" stroke="#f0e6d8" stroke-width="1"/>
+    <path d="M60,35 Q65,45 70,35" fill="#fff9f0" stroke="#f0e6d8" stroke-width="1"/>
+    <path d="M90,35 Q95,50 100,35" fill="#fff9f0" stroke="#f0e6d8" stroke-width="1"/>
+    <path d="M120,35 Q125,45 130,35" fill="#fff9f0" stroke="#f0e6d8" stroke-width="1"/>
+    
+    <!-- Decorative Swirls -->
+    <path d="M20,15 Q30,5 40,15" stroke="#fff9f0" stroke-width="3" fill="none"/>
+    <path d="M60,10 Q70,0 80,10" stroke="#fff9f0" stroke-width="3" fill="none"/>
+    <path d="M100,15 Q110,5 120,15" stroke="#fff9f0" stroke-width="3" fill="none"/>
+  </g>
+  
+  <!-- Product Name -->
+  <text x="200" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#b71c1c">Red Velvet Cake</text>
+</svg>

@@ -60,5 +60,8 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
-INSERT INTO users (username, password) VALUES
-('admin', '$2y$10$WZf6Hj1rTXwAYj6zI1h3..p6XhP0c6QzKq7X2M7Z3y9Ae1d6F9r6i'); -- contoh hash password
+
+
+-- Langsung menunjuk ke tabel users di dalam database sweetbake
+INSERT INTO sweetbake.users (username, password)
+VALUES ('nisya', '$2y$10$5UfAqEo44AxCRxOKhRWPygeosyjyIOZ9H6Y2CgfyMAVZ5lYYohZd0em');
