@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['checkout'])) {
             container.innerHTML = cart.map((item, idx) => `
                 <div class="cart-item">
                     <div class="item-checkbox ${item.checked ? 'checked' : ''}" onclick="toggleItem(${idx})"></div>
-                    <img src="${item.img || item.image || ''}" alt="${item.name}" class="item-image" />
+                    <img src="../assets/img/${item.img}" alt="${item.name}" class="item-image" />
                     <div class="item-info">
                         <div class="item-name">${item.name}</div>
                         <div class="item-variant">${item.variant ? item.variant : ''}</div>

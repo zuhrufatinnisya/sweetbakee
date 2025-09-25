@@ -72,7 +72,7 @@ function generatePromoCard($promo) {
             <span class="price-final">' . formatRupiah($promo['harga_promo']) . '</span>
         </div>
         <div class="flex justify-center">
-            <button onclick="event.stopPropagation(); addToCart(\'' . htmlspecialchars($promo['kode_promo']) . '\', \'' . htmlspecialchars($promo['nama_paket']) . '\', ' . $promo['harga_promo'] . ', \'' . htmlspecialchars($promo['image']) . '\')">
+                <button onclick="event.stopPropagation(); addToCart(\'' . htmlspecialchars($promo['kode_promo']) . '\', \'' . htmlspecialchars($promo['nama_paket']) . '\', ' . $promo['harga_promo'] . ', \'' . htmlspecialchars($promo['image']) . '\', ' . $promo['id'] . ')">
                 <i class="bi bi-cart3"></i>
                 <span>Tambah</span>
             </button>
@@ -202,13 +202,13 @@ $cartCount = isset($_SESSION['cart_count']) ? $_SESSION['cart_count'] : 0;
 
        function addToCart(kodePromo, namaPromo, harga, image = '', id = null) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let existing = cart.find(item => item.kodePromo === kodePromo);
+    let prodId = parseInt(id);
+    let existing = cart.find(item => item.id === prodId);
     if (existing) {
         existing.quantity += 1;
     } else {
         cart.push({
-            id: id || Date.now(),
-            kodePromo,
+            id: prodId,
             name: namaPromo,
             price: harga,
             img: image,

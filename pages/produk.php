@@ -279,6 +279,11 @@ function formatRupiah($angka) {
         <?= htmlspecialchars($product['desc']) ?>
       </p>
       <div style="display:flex;align-items:center;gap:22px;">
+        <div style="display:inline-flex;align-items:center;gap:10px;">
+          <button id="qtyMinus" style="background:#eee;border:none;padding:8px 14px;border-radius:8px;font-size:1.2em;font-weight:700;color:#B27441;">−</button>
+          <input type="number" id="qtyInput" min="1" value="1" style="width:60px;padding:6px 10px;border-radius:6px;border:1px solid #ccc;text-align:center;font-size:1.1em;">
+          <button id="qtyPlus" style="background:#eee;border:none;padding:8px 14px;border-radius:8px;font-size:1.2em;font-weight:700;color:#B27441;">+</button>
+        </div>
         <button class="btn-order" id="orderNowBtn" style="background:#B27441;color:#fff;padding:14px 32px;border-radius:10px;font-weight:700;font-size:1.08em;">ORDER NOW</button>
         <?php if(isset($product['old_price'])): ?>
           <span class="product-price" style="color:#b0a7a7;font-size:1.1em;font-weight:600;text-decoration:line-through;margin-right:10px;">Rp <?= number_format($product['old_price'],0,',','.') ?></span>
@@ -290,30 +295,79 @@ function formatRupiah($angka) {
   <img src="../assets/img/<?= htmlspecialchars($product['img']) ?>" alt="<?= htmlspecialchars($product['name']) ?>" style="width:90%;max-width:540px;border-radius:22px;box-shadow:0 2px 18px #f3d1b3;margin-top:60px;object-fit:cover;">
 </div>
 <script>
-// ORDER NOW button: add to cart (localStorage) and redirect
+// Quantity adjuster and ORDER NOW sync
 document.addEventListener('DOMContentLoaded', function() {
+  var qtyInput = document.getElementById('qtyInput');
+  var qtyMinus = document.getElementById('qtyMinus');
+  var qtyPlus = document.getElementById('qtyPlus');
   var orderBtn = document.getElementById('orderNowBtn');
-  if(orderBtn) {
+  var prodId = <?= json_encode($id) ?>;
+  var prodName = <?= json_encode($product['name']) ?>;
+  var prodPrice = <?= json_encode($product['price']) ?>;
+  var prodImg = <?= json_encode($product['img']) ?>;
+
+  function syncQtyInput() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let existing = cart.find(c => c.id === prodId);
+    qtyInput.value = existing ? existing.quantity : 1;
+  }
+  syncQtyInput();
+
+  function updateCartQty() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let existing = cart.find(c => c.id === prodId);
+    let qty = parseInt(qtyInput.value) || 1;
+    if(existing) {
+      existing.quantity = qty;
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+  }
+
+  if(qtyMinus && qtyInput) {
+    qtyMinus.addEventListener('click', function() {
+      let val = parseInt(qtyInput.value) || 1;
+      if(val > 1) qtyInput.value = val - 1;
+      updateCartQty();
+    });
+  }
+  if(qtyPlus && qtyInput) {
+    qtyPlus.addEventListener('click', function() {
+      let val = parseInt(qtyInput.value) || 1;
+      qtyInput.value = val + 1;
+      updateCartQty();
+    });
+  }
+  if(qtyInput) {
+    qtyInput.addEventListener('change', function() {
+      let val = parseInt(qtyInput.value) || 1;
+      if(val < 1) qtyInput.value = 1;
+      updateCartQty();
+    });
+  }
+
+  if(orderBtn && qtyInput) {
     orderBtn.addEventListener('click', function() {
+      var qty = parseInt(qtyInput.value) || 1;
       var item = {
-        name: <?= json_encode($product['name']) ?>,
-        price: <?= json_encode($product['price']) ?>,
-        img: '../assets/img/<?= htmlspecialchars($product['img']) ?>',
-        quantity: 1
+        id: prodId,
+        name: prodName,
+        price: prodPrice,
+        img: prodImg,
+        quantity: qty
       };
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      let existing = cart.find(c => c.name === item.name);
+      let existing = cart.find(c => c.id === item.id);
       if (existing) {
-        existing.quantity += 1;
+        existing.quantity = qty;
       } else {
         cart.push(item);
       }
       localStorage.setItem('cart', JSON.stringify(cart));
       alert(item.name + ' ditambahkan ke keranjang!');
-            window.location.href = 'keranjang.php';
-          });
-        }
-      });
-      </script>
-      </body>
-      </html>
+      window.location.href = 'keranjang.php';
+    });
+  }
+});
+</script>
+</body>
+</html>
